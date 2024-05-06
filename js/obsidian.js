@@ -476,10 +476,10 @@ var Obsidian = {
             .find('.CodeMirror')
             .prepend(
               '<span class="language-mark" ref=' +
-                lang +
-                '> <b class="iconfont icon-code" style="line-height: 0.7rem"></b> ' +
-                displayLangText +
-                '</span>'
+              lang +
+              '> <b class="iconfont icon-code" style="line-height: 0.7rem"></b> ' +
+              displayLangText +
+              '</span>'
             );
         }
       });
@@ -540,9 +540,9 @@ var Obsidian = {
           return e
             ? t
             : (t = {
-                name: 'javascript',
-                json: !0,
-              });
+              name: 'javascript',
+              json: !0,
+            });
         case 'jsonld':
         case 'json-ld':
           return e ? t : 'application/ld+json';
@@ -552,9 +552,9 @@ var Obsidian = {
           return e
             ? 'typescript'
             : (t = {
-                name: 'javascript',
-                typescript: !0,
-              });
+              name: 'javascript',
+              typescript: !0,
+            });
         case 'clojure':
           return t;
         case 'coffee':
@@ -863,9 +863,9 @@ var Obsidian = {
   },
   getCodeMirrorMode: function (t, e, n) {
     var i = ((t = (t = t ? t.toLowerCase() : '')
-        .replace(/^\s*\.*lang(uage)*-/g, '')
-        .replace(/[{}]/g, '')
-        .trim()).split(/\s+/) || [t])[0],
+      .replace(/^\s*\.*lang(uage)*-/g, '')
+      .replace(/[{}]/g, '')
+      .trim()).split(/\s+/) || [t])[0],
       r = Obsidian.v(t, n);
     return (
       r || t == i || (r = Obsidian.v(i.replace(/(^[.])|(,$)/g, ''), n)), r || (n ? i : e ? null : t)
@@ -993,7 +993,8 @@ $(function () {
         winWidth = $(window).width(),
         scrollPercent = scrollTop / (docHeight - winHeight),
         scrollPercentRounded = Math.round(scrollPercent * 100),
-        backToTopState = $('#back-to-top').css('display');
+        backToTopState = $('#back-to-top').css('display'),
+        clickableCateState = $('#clickable-cat').css('display');
 
       $('#back-to-top')
         .find('.percentage')
@@ -1009,6 +1010,12 @@ $(function () {
             $('#back-to-top').addClass('fadeInRight');
             $('#back-to-top').css('display', 'block');
           }
+
+          if (clickableCateState === 'none') {
+            $('#clickable-cat').removeClass('fadeOutRight');
+            $('#clickable-cat').addClass('fadeInRight');
+            $('#clickable-cat').css('display', 'block');
+          }
         } else {
           if (backToTopState === 'block') {
             setTimeout(function () {
@@ -1016,6 +1023,14 @@ $(function () {
             }, 400);
             $('#back-to-top').removeClass('fadeInRight');
             $('#back-to-top').addClass('fadeOutRight');
+          }
+
+          if (clickableCateState === 'block') {
+            setTimeout(function () {
+              $('#clickable-cat').css('display', 'none');
+            }, 400);
+            $('#clickable-cat').removeClass('fadeInRight');
+            $('#clickable-cat').addClass('fadeOutRight');
           }
         }
       }
@@ -1103,7 +1118,7 @@ $(function () {
               500
             );
             document.querySelectorAll('pre code').forEach(block => {
-              if(typeof hljs !== 'undefined') hljs.highlightBlock(block);
+              if (typeof hljs !== 'undefined') hljs.highlightBlock(block);
             });
             Obsidian.setCodeRowWithLang();
             if ($('#vcomments').length) {
@@ -1334,10 +1349,4 @@ $(function () {
   utiliseBgColor();
   initialTyped();
   Obsidian.setCodeRowWithLang();
-  console.log(
-    '%c Github %c',
-    'background:#24272A; color:#73ddd7',
-    '',
-    'https://github.com/TriDiamond/hexo-theme-obsidian'
-  );
 });
