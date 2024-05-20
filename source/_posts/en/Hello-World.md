@@ -7,7 +7,6 @@ categories:
 tags:
     - blog
 
-slogan: MEOW MEOW MEOW
 abstract: Hello, my name is Jingyu Liu.
 preview: 50
 ---
