@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Parent Delegation Model</title>
+      <link href="/en/2024/05/20/Parent-Delegation-Model/"/>
+      <url>/en/2024/05/20/Parent-Delegation-Model/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Parent-Delegation-Model-In-JVM"><a href="#Parent-Delegation-Model-In-JVM" class="headerlink" title="Parent Delegation Model In JVM"></a>Parent Delegation Model In JVM</h1><p>The Parent Delegation Model in Java class loading refers to the hierarchical approach used by class loaders to load classes. This model ensures that class loaders delegate the task of class loading to their parent class loaders before attempting to load the class themselves.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> JVM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM Introduction</title>
       <link href="/en/2024/05/19/JVM-Introduction/"/>
       <url>/en/2024/05/19/JVM-Introduction/</url>
