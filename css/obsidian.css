@@ -2443,7 +2443,7 @@ h1.title {
   color: #5d5d5d;
 }
 .else .md-content ul {
-  margin: 0 0 2rem 0;
+  margin: 0 0 0 0;
   padding-inline-start: 0;
 }
 .else .md-content ul li {
@@ -2765,7 +2765,7 @@ h1.title {
   color: #9e9e9e;
 }
 .content ul {
-  margin: 0 0 2rem 0;
+  margin: 0 0 0 0;
 }
 .content ul li {
   list-style: none;
