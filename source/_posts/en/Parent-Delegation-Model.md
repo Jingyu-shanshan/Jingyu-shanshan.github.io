@@ -14,7 +14,7 @@ preview: 100
 # Parent Delegation Model In JVM
 The Parent Delegation Model in Java class loading refers to the hierarchical approach used by class loaders to load classes. This model ensures that class loaders delegate the task of class loading to their parent class loaders before attempting to load the class themselves.
 
-![alt text](parent-delegation-model.png)
+![Parent Delegation Model Work Flow](parent-delegation-model.png)
 
 ## Hierarchy of Class Loaders:
 
