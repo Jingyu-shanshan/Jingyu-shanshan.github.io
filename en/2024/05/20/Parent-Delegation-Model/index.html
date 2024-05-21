@@ -160,7 +160,7 @@
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <h1 id="Parent-Delegation-Model-In-JVM"><a href="#Parent-Delegation-Model-In-JVM" class="headerlink" title="Parent Delegation Model In JVM"></a>Parent Delegation Model In JVM</h1><p>The Parent Delegation Model in Java class loading refers to the hierarchical approach used by class loaders to load classes. This model ensures that class loaders delegate the task of class loading to their parent class loaders before attempting to load the class themselves.</p>
-<p><img src="/en/2024/05/20/Parent-Delegation-Model/parent-delegation-model.png" alt="alt text"></p>
+<p><img src="/en/2024/05/20/Parent-Delegation-Model/parent-delegation-model.png" alt="Parent Delegation Model Work Flow"></p>
 <h2 id="Hierarchy-of-Class-Loaders"><a href="#Hierarchy-of-Class-Loaders" class="headerlink" title="Hierarchy of Class Loaders:"></a>Hierarchy of Class Loaders:</h2><ul>
 <li>Java uses a hierarchical delegation model where every class loader has a parent class loader. The delegation starts from the top of the hierarchy with the bootstrap class loader, which is responsible for loading core Java classes (<code>java.*</code>).</li>
 <li>Custom class loaders typically extend <code>java.lang.ClassLoader</code> and have a parent class loader, forming a chain up to the bootstrap class loader.</li>
