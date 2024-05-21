@@ -9,10 +9,10 @@ tags:
     - JVM
 
 abstract: JVM INTRODUCTION
-preview: 50
+preview: 100
 ---
 # Java Virtual Machine (JVM) Architecture
-This blog introduces the basic srtucture and workload of JVM.
+The Java Virtual Machine (JVM) is a core component of the Java platform, providing a runtime environment that enables Java applications to execute.
 
 ## Java Architecture
 Let’s look at Java architecture to get a high-level picture of JVM.
