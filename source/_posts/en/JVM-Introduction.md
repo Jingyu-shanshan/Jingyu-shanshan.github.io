@@ -34,6 +34,7 @@ The Class Loader Subsystem is a foundational part of the JVM, enabling the dynam
 * **Loading**:
     * The Class Loader Subsystem loads class files into the JVM from various sources, such as local file systems, remote servers, or network locations.
     * This process involves locating the class file, reading its binary data, and then transforming it into a class object in memory.
+    * The {% post_link Parent-Delegation-Model 'Parent Delegation Model' %} is used.
 * **Linking**:
     * Verification: Ensures the correctness of the bytecode, making sure it adheres to the JVM's constraints and security standards.
     * Preparation: Allocates memory for class variables (static fields) and initializes them with default values.

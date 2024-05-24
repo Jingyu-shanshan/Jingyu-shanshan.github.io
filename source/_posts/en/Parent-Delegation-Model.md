@@ -31,6 +31,72 @@ The Parent Delegation Model in Java class loading refers to the hierarchical app
 * **Security**: Prevents malicious classes from overriding core Java classes by ensuring they are always loaded by the bootstrap class loader.
 * **Consistency**: Ensures that the same version of a class is used throughout the application, avoiding conflicts and inconsistencies.
 
+# Implement Custom ClassLoader
+Creating a custom class loader in Java allows you to define how classes are loaded into the JVM. This can be useful for a variety of tasks, such as loading classes from unconventional sources, applying custom transformations, or implementing security policies.
+
+## Step-by-Step Guide
+
+### Extend ClassLoader:
+
+* Create a new class that extends java.lang.ClassLoader.
+
+### Override findClass Method:
+
+* Override the findClass method to define how the class loader should find and load classes.
+
+### Define Class Loading Logic:
+
+* Implement the logic for loading class data, such as reading class bytes from a file, network, or other sources.
+
+## Example Code
+
+``` Java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class CustomClassLoader extends ClassLoader {
+
+    private String classesDir;
+
+    public CustomClassLoader(String classesDir) {
+        this.classesDir = classesDir;
+    }
+
+    @Override
+    protected Class<?> findClass(String name) throws ClassNotFoundException {
+        byte[] classData = loadClassData(name);
+        if (classData == null) {
+            throw new ClassNotFoundException("Class not found: " + name);
+        }
+        return defineClass(name, classData, 0, classData.length);
+    }
+
+    private byte[] loadClassData(String name) {
+        String filePath = classesDir + File.separator + name.replace('.', File.separatorChar) + ".class";
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            byte[] buffer = new byte[(int) new File(filePath).length()];
+            fis.read(buffer);
+            return buffer;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            CustomClassLoader customClassLoader = new CustomClassLoader("path/to/classes");
+            Class<?> clazz = customClassLoader.loadClass("com.example.MyClass");
+            Object instance = clazz.newInstance();
+            System.out.println("Class loaded and instance created: " + instance.getClass().getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
 # Conclusion
 The parent delegation model ensures that the system class loader (or any custom class loader) delegates the loading of a class to its parent before attempting to load it itself. This hierarchical delegation helps in maintaining a clear separation of responsibilities and ensures that core Java classes are loaded by the trusted system class loader (or its parent)​.
 
