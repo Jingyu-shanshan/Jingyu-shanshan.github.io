@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Parent Delegation Model - Jingyu&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Java C# Jingyu,"> 
+    <meta name="description" content="Parent Delegation Model In JVMThe Parent Delegation Model in Java class loading refers to the hiera,"> 
+    <meta name="author" content="Jingyu Liu"> 
+    <link rel="alternative" href="atom.xml" title="Jingyu&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/my-theme.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+    <script>var musiclist = ""</script>
+    
+<script src="/js/loadaplayer.js"></script>
+
+    <!-- 引用依赖 -->
+    
+<link rel="stylesheet" href="/aplayer/dist/APlayer.min.css">
+
+    
+<script src="/aplayer/dist/APlayer.min.js"></script>
+<script src="/js/Meting.min.js"></script>
+
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Jingyu&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://shanshanblog.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Parent Delegation Model</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.avif') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/JAVA"><b>「
+                    </b>JAVA<b> 」</b></a>
+                
+                May 20, 2024
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/en/2024/05/20/Parent-Delegation-Model/" title="Parent Delegation Model" class="">Parent Delegation Model</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    11k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    10 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s">Parent Delegation Model</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="Parent-Delegation-Model-In-JVM"><a href="#Parent-Delegation-Model-In-JVM" class="headerlink" title="Parent Delegation Model In JVM"></a>Parent Delegation Model In JVM</h1><p>The Parent Delegation Model in Java class loading refers to the hierarchical approach used by class loaders to load classes. This model ensures that class loaders delegate the task of class loading to their parent class loaders before attempting to load the class themselves.</p>
+<p><img src="/en/2024/05/20/Parent-Delegation-Model/parent-delegation-model.png" alt="Parent Delegation Model Work Flow"></p>
+<h2 id="Hierarchy-of-Class-Loaders"><a href="#Hierarchy-of-Class-Loaders" class="headerlink" title="Hierarchy of Class Loaders:"></a>Hierarchy of Class Loaders:</h2><ul>
+<li>Java uses a hierarchical delegation model where every class loader has a parent class loader. The delegation starts from the top of the hierarchy with the bootstrap class loader, which is responsible for loading core Java classes (<code>java.*</code>).</li>
+<li>Custom class loaders typically extend <code>java.lang.ClassLoader</code> and have a parent class loader, forming a chain up to the bootstrap class loader.</li>
+</ul>
+<h2 id="Delegation-Mechanism"><a href="#Delegation-Mechanism" class="headerlink" title="Delegation Mechanism:"></a>Delegation Mechanism:</h2><ul>
+<li>When a class loader is asked to load a class, it first delegates this request to its parent class loader before attempting to load the class itself. This ensures that core Java classes and those provided by the application are loaded by the appropriate class loaders and prevents duplicate class definitions.</li>
+<li>For example, if a custom class loader attempts to load a class named <code>java.util.ArrayList</code>, it will first delegate this request to its parent. Since <code>ArrayList</code> is part of the core Java libraries, it will be loaded by the bootstrap class loader.</li>
+</ul>
+<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages:"></a>Advantages:</h2><ul>
+<li><strong>Security</strong>: Prevents malicious classes from overriding core Java classes by ensuring they are always loaded by the bootstrap class loader.</li>
+<li><strong>Consistency</strong>: Ensures that the same version of a class is used throughout the application, avoiding conflicts and inconsistencies.</li>
+</ul>
+<h1 id="Implement-Custom-ClassLoader"><a href="#Implement-Custom-ClassLoader" class="headerlink" title="Implement Custom ClassLoader"></a>Implement Custom ClassLoader</h1><p>Creating a custom class loader in Java allows you to define how classes are loaded into the JVM. This can be useful for a variety of tasks, such as loading classes from unconventional sources, applying custom transformations, or implementing security policies.</p>
+<h2 id="Step-by-Step-Guide"><a href="#Step-by-Step-Guide" class="headerlink" title="Step-by-Step Guide"></a>Step-by-Step Guide</h2><h3 id="Extend-ClassLoader"><a href="#Extend-ClassLoader" class="headerlink" title="Extend ClassLoader:"></a>Extend ClassLoader:</h3><ul>
+<li>Create a new class that extends java.lang.ClassLoader.</li>
+</ul>
+<h3 id="Override-findClass-Method"><a href="#Override-findClass-Method" class="headerlink" title="Override findClass Method:"></a>Override findClass Method:</h3><ul>
+<li>Override the findClass method to define how the class loader should find and load classes.</li>
+</ul>
+<h3 id="Define-Class-Loading-Logic"><a href="#Define-Class-Loading-Logic" class="headerlink" title="Define Class Loading Logic:"></a>Define Class Loading Logic:</h3><ul>
+<li>Implement the logic for loading class data, such as reading class bytes from a file, network, or other sources.</li>
+</ul>
+<h2 id="Example-Code"><a href="#Example-Code" class="headerlink" title="Example Code"></a>Example Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomClassLoader</span> <span class="keyword">extends</span> <span class="title class_">ClassLoader</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String classesDir;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomClassLoader</span><span class="params">(String classesDir)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.classesDir = classesDir;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">byte</span>[] classData = loadClassData(name);</span><br><span class="line">        <span class="keyword">if</span> (classData == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ClassNotFoundException</span>(<span class="string">&quot;Class not found: &quot;</span> + name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> defineClass(name, classData, <span class="number">0</span>, classData.length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">byte</span>[] loadClassData(String name) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> classesDir + File.separator + name.replace(<span class="string">&#x27;.&#x27;</span>, File.separatorChar) + <span class="string">&quot;.class&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(filePath)) &#123;</span><br><span class="line">            <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[(<span class="type">int</span>) <span class="keyword">new</span> <span class="title class_">File</span>(filePath).length()];</span><br><span class="line">            fis.read(buffer);</span><br><span class="line">            <span class="keyword">return</span> buffer;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">CustomClassLoader</span> <span class="variable">customClassLoader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CustomClassLoader</span>(<span class="string">&quot;path/to/classes&quot;</span>);</span><br><span class="line">            Class&lt;?&gt; clazz = customClassLoader.loadClass(<span class="string">&quot;com.example.MyClass&quot;</span>);</span><br><span class="line">            <span class="type">Object</span> <span class="variable">instance</span> <span class="operator">=</span> clazz.newInstance();</span><br><span class="line">            System.out.println(<span class="string">&quot;Class loaded and instance created: &quot;</span> + instance.getClass().getName());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>The parent delegation model ensures that the system class loader (or any custom class loader) delegates the loading of a class to its parent before attempting to load it itself. This hierarchical delegation helps in maintaining a clear separation of responsibilities and ensures that core Java classes are loaded by the trusted system class loader (or its parent)​.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a target="_blank" rel="noopener" href="https://www.oracle.com/technical-resources/articles/javase/classloaders.html">Understanding Network Class Loaders</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='Ov23liFPa7jlgRmJhqMv'
+        data-cs='66acbe3071934465c7317d3570d060462d8b707e'
+        data-r='Jingyu-shanshan.github.io'
+        data-o='Jingyu-shanshan'
+        data-a='Jingyu-shanshan'
+        data-d=''
+        data-p='https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    >Comments</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Jingyu Liu</p>
+                    <span>君子以文德，士以德为主；志不强者智不达。</span>
+                    <dl>
+                        
+                            
+                                <dd><a href="https://github.com/Jingyu-shanshan" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">4 <p>Articles</p></a></li>
+                    <li><a href="/categories">2 <p>Categories</p></a></li>
+                    <li><a href="/tags">4 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Parent-Delegation-Model-In-JVM"><span class="toc-number">1.</span> <span class="toc-text">Parent Delegation Model In JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hierarchy-of-Class-Loaders"><span class="toc-number">1.1.</span> <span class="toc-text">Hierarchy of Class Loaders:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delegation-Mechanism"><span class="toc-number">1.2.</span> <span class="toc-text">Delegation Mechanism:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advantages"><span class="toc-number">1.3.</span> <span class="toc-text">Advantages:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Implement-Custom-ClassLoader"><span class="toc-number">2.</span> <span class="toc-text">Implement Custom ClassLoader</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-by-Step-Guide"><span class="toc-number">2.1.</span> <span class="toc-text">Step-by-Step Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Extend-ClassLoader"><span class="toc-number">2.1.1.</span> <span class="toc-text">Extend ClassLoader:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Override-findClass-Method"><span class="toc-number">2.1.2.</span> <span class="toc-text">Override findClass Method:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Define-Class-Loading-Logic"><span class="toc-number">2.1.3.</span> <span class="toc-text">Define Class Loading Logic:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example-Code"><span class="toc-number">2.2.</span> <span class="toc-text">Example Code</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="dialog" class="animated fadeIn faster"><p>Save my<br/>Babies 🐱</p></div>
+    <div id="clickable-cat" class="animated fadeIn faster" onclick="location.href='https://shanshanblog.com/KissaGame/main.html';" style="cursor:pointer;"></div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2024
+        <span class="gradient-text">
+            Jingyu Liu
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+ 
+<script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+  
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/my-theme.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Where there is a will, there is a way.', '君子以文德，士以德为主；志不强者智不达。'],
+        typeSpeed: 100,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+<script>
+  
+</script>
+
+<!-- 引用依赖 -->
+<script>document.write(aplayerconf)</script>
+
+
+
+
+</html>

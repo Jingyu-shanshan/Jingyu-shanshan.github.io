@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JVM Introduction - Jingyu&#39;s Blog</title>
+    <title>I AM JINGYU LIU, A SOFTWARE DEVELOPER - Jingyu&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Java C# Jingyu,"> 
-    <meta name="description" content="Java Virtual Machine (JVM) ArchitectureThe Java Virtual Machine (JVM) is a core component of the Ja,"> 
+    <meta name="description" content="Introducing Jingyu Liu: Software Developer and Game Enthusiast, and Cat LoverHello there! I’m Jingy,"> 
     <meta name="author" content="Jingyu Liu"> 
     <link rel="alternative" href="atom.xml" title="Jingyu&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -77,7 +77,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://shanshanblog.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">JVM Introduction</h3>
+        <h3 class="subtitle">I AM JINGYU LIU, A SOFTWARE DEVELOPER</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -107,25 +107,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/JAVA"><b>「
-                    </b>JAVA<b> 」</b></a>
+                <a href="/categories/blog"><b>「
+                    </b>BLOG<b> 」</b></a>
                 
-                May 19, 2024
+                March 09, 1998
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/en/2024/05/19/JVM-Introduction/" title="JVM Introduction" class="">JVM Introduction</a>
+            <h3 class="post-title animated fadeInDown"><a href="/en/1998/03/09/Hello-World/" title="I AM JINGYU LIU, A SOFTWARE DEVELOPER" class="">I AM JINGYU LIU, A SOFTWARE DEVELOPER</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5.6k
+                    3.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    5 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -138,7 +138,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
             
         </div>
     </div>
@@ -149,7 +149,7 @@
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s">JVM INTRODUCTION</span>
+                    <span class="animated fadeIn delay-1s">Hello, my name is Jingyu Liu.</span>
                 </p>
             </div>
         </div>
@@ -159,57 +159,14 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="Java-Virtual-Machine-JVM-Architecture"><a href="#Java-Virtual-Machine-JVM-Architecture" class="headerlink" title="Java Virtual Machine (JVM) Architecture"></a>Java Virtual Machine (JVM) Architecture</h1><p>The Java Virtual Machine (JVM) is a core component of the Java platform, providing a runtime environment that enables Java applications to execute.</p>
-<h2 id="Java-Architecture"><a href="#Java-Architecture" class="headerlink" title="Java Architecture"></a>Java Architecture</h2><p>Let’s look at Java architecture to get a high-level picture of JVM.</p>
-<p><img src="/en/2024/05/19/JVM-Introduction/Java-architecture.png" alt="Java Architecture"></p>
-<h1 id="Internal-Structure-of-JVM"><a href="#Internal-Structure-of-JVM" class="headerlink" title="Internal Structure of JVM"></a>Internal Structure of JVM</h1><p><img src="/en/2024/05/19/JVM-Introduction/JVM-architecture.png" alt="JVM Architecture"></p>
-<p>There are three main mechanisms inside the JVM as shown in the above diagram.</p>
-<ul>
-<li>ClassLoader</li>
-<li>Memory Area</li>
-<li>Execution Engine</li>
-</ul>
-<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p>The Class Loader Subsystem is a foundational part of the JVM, enabling the dynamic loading, linking, and initialization of classes. By following a hierarchical delegation model, it ensures the integrity and consistency of the class loading process, while also providing flexibility through custom class loaders.</p>
-<h3 id="How-the-Class-Loader-Subsystem-Works"><a href="#How-the-Class-Loader-Subsystem-Works" class="headerlink" title="How the Class Loader Subsystem Works"></a>How the Class Loader Subsystem Works</h3><ul>
-<li><strong>Loading</strong>:<ul>
-<li>The Class Loader Subsystem loads class files into the JVM from various sources, such as local file systems, remote servers, or network locations.</li>
-<li>This process involves locating the class file, reading its binary data, and then transforming it into a class object in memory.</li>
-<li>The <a href="/en/2024/05/20/Parent-Delegation-Model/" title="Parent Delegation Model">Parent Delegation Model</a> is used.</li>
-</ul>
-</li>
-<li><strong>Linking</strong>:<ul>
-<li>Verification: Ensures the correctness of the bytecode, making sure it adheres to the JVM’s constraints and security standards.</li>
-<li>Preparation: Allocates memory for class variables (static fields) and initializes them with default values.</li>
-<li>Resolution: Converts symbolic references in the class file into actual references to memory locations.</li>
-</ul>
-</li>
-<li><strong>Initialization</strong>:<ul>
-<li>Executes the class’s static initializers and the static blocks of code.</li>
-<li>This phase involves executing any class initialization code to set up static fields and other static structures.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Runtime-Data-Area"><a href="#Runtime-Data-Area" class="headerlink" title="Runtime Data Area"></a>Runtime Data Area</h2><p>Runtime data areas are essential components that support the execution of Java programs. The JVM runtime data areas include several key components:</p>
-<ul>
-<li><strong>Program Counter (PC) Register:</strong> Each JVM thread has its own PC register. At any point, each Java virtual machine thread is executing the code of a single method, the current method for that thread.</li>
-<li><strong>Java Virtual Machine Stacks:</strong> Each Java virtual machine thread has a private Java virtual machine stack, created at the same time as the thread.<ul>
-<li>Each method creates a stack frame when it executes, which stores the local variable table, operand stack, dynamic linking, method return address, and other information.</li>
-<li>The process of calling a method and completing its execution corresponds to pushing and popping a stack frame in the JVM stack.</li>
-</ul>
-</li>
-<li><strong>Native Method Stacks:</strong><ul>
-<li>These stacks are similar to JVM stacks but are used for native methods. </li>
-<li>The HotSpot JVM does not distinguish between the JVM stack and the native method stack, treating them as a single stack​</li>
-</ul>
-</li>
-<li><strong>Method Area:</strong> This area stores class structures such as the runtime constant pool, field and method data, and the code for methods and constructors. In the HotSpot JVM, this area is often referred to as the “Permanent Generation” (PermGen), though in JDK 8 and later, it has been replaced by the “Metaspace”</li>
-<li><strong>Heap:</strong> The heap is shared among all JVM threads and is the runtime data area from which memory for all class instances and arrays is allocated. The heap is created at JVM startup and is managed by the garbage collector, which reclaims memory used by objects that are no longer reachable​.<ul>
-<li>From a memory reclamation perspective, it is divided into the young generation and old generation, which are further subdivided into Eden space, From Survivor space, and To Survivor space.</li>
-<li>From a memory allocation perspective, it may include multiple thread-local allocation buffers (TLABs) for private allocation by threads.</li>
-</ul>
-</li>
-</ul>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a target="_blank" rel="noopener" href="https://medium.com/java-for-beginners/understanding-java-virtual-machine-jvm-architecture-e68d1c611026">Understanding Java Virtual Machine (JVM) Architecture</a><br>[2] <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se6/html/Overview.doc.html">The Structure of the Java Virtual Machine</a></p>
+            <h1 id="Introducing-Jingyu-Liu-Software-Developer-and-Game-Enthusiast-and-Cat-Lover"><a href="#Introducing-Jingyu-Liu-Software-Developer-and-Game-Enthusiast-and-Cat-Lover" class="headerlink" title="Introducing Jingyu Liu: Software Developer and Game Enthusiast, and Cat Lover"></a>Introducing Jingyu Liu: Software Developer and Game Enthusiast, and Cat Lover</h1><p>Hello there! I’m Jingyu Liu, a passionate software developer with a knack for creating engaging games and crafting efficient code. With proficiency in C#, Java, and Python, coupled with a strong grasp of Agile development and Continuous Integration&#x2F;Continuous Deployment (CI&#x2F;CD) practices, I thrive in the dynamic world of software engineering.</p>
+<h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><h3 id="Professional-Background"><a href="#Professional-Background" class="headerlink" title="Professional Background"></a>Professional Background</h3><p>I’ve been immersed in the world of software development for half and two years, and during this journey, I’ve honed my skills in various programming languages and methodologies. Whether it’s developing robust backend systems in C#, building scalable applications in Java, or crafting elegant solutions in Python, I relish the challenge of solving complex problems with elegant code.</p>
+<h3 id="Passion-for-Game-Development"><a href="#Passion-for-Game-Development" class="headerlink" title="Passion for Game Development"></a>Passion for Game Development</h3><p>One of my greatest joys in programming is bringing ideas to life through games. From simple text-based adventures to immersive 3D experiences, I love exploring the intersection of technology and creativity. Game development allows me to unleash my imagination while leveraging my technical expertise to deliver memorable experiences for players.</p>
+<h2 id="What-I-Bring-to-the-Table"><a href="#What-I-Bring-to-the-Table" class="headerlink" title="What I Bring to the Table"></a>What I Bring to the Table</h2><h3 id="Agile-and-CI-CD-Advocate"><a href="#Agile-and-CI-CD-Advocate" class="headerlink" title="Agile and CI&#x2F;CD Advocate"></a>Agile and CI&#x2F;CD Advocate</h3><p>I strongly believe in the Agile manifesto’s principles of collaboration, adaptability, and customer satisfaction. As an Agile practitioner, I thrive in fast-paced environments, embracing change and delivering value incrementally. Additionally, my proficiency in CI&#x2F;CD pipelines ensures that software is continuously integrated, tested, and deployed, enabling rapid feedback loops and enhancing overall product quality.</p>
+<h3 id="Creative-Problem-Solver"><a href="#Creative-Problem-Solver" class="headerlink" title="Creative Problem Solver"></a>Creative Problem Solver</h3><p>Whether it’s optimizing algorithms for performance or designing intuitive user interfaces, I approach every challenge with creativity and ingenuity. My ability to think outside the box allows me to devise innovative solutions that not only meet technical requirements but also delight end-users.</p>
+<h2 id="Let’s-Connect"><a href="#Let’s-Connect" class="headerlink" title="Let’s Connect!"></a>Let’s Connect!</h2><p>If you’re as passionate about software development and game creation as I am, I’d love to connect! Whether it’s discussing the latest tech trends, sharing game development tips, or collaborating on exciting projects, feel free to reach out. Together, we can push the boundaries of what’s possible in the world of software engineering and gaming.</p>
+<p>Thanks for stopping by, and I look forward to embarking on this journey together!</p>
+<p>Jingyu Liu</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -273,7 +230,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Virtual-Machine-JVM-Architecture"><span class="toc-number">1.</span> <span class="toc-text">Java Virtual Machine (JVM) Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-Architecture"><span class="toc-number">1.1.</span> <span class="toc-text">Java Architecture</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Internal-Structure-of-JVM"><span class="toc-number">2.</span> <span class="toc-text">Internal Structure of JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ClassLoader"><span class="toc-number">2.1.</span> <span class="toc-text">ClassLoader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-the-Class-Loader-Subsystem-Works"><span class="toc-number">2.1.1.</span> <span class="toc-text">How the Class Loader Subsystem Works</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime-Data-Area"><span class="toc-number">2.2.</span> <span class="toc-text">Runtime Data Area</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introducing-Jingyu-Liu-Software-Developer-and-Game-Enthusiast-and-Cat-Lover"><span class="toc-number">1.</span> <span class="toc-text">Introducing Jingyu Liu: Software Developer and Game Enthusiast, and Cat Lover</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Me"><span class="toc-number">1.1.</span> <span class="toc-text">About Me</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Professional-Background"><span class="toc-number">1.1.1.</span> <span class="toc-text">Professional Background</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passion-for-Game-Development"><span class="toc-number">1.1.2.</span> <span class="toc-text">Passion for Game Development</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-I-Bring-to-the-Table"><span class="toc-number">1.2.</span> <span class="toc-text">What I Bring to the Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Agile-and-CI-CD-Advocate"><span class="toc-number">1.2.1.</span> <span class="toc-text">Agile and CI&#x2F;CD Advocate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creative-Problem-Solver"><span class="toc-number">1.2.2.</span> <span class="toc-text">Creative Problem Solver</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let%E2%80%99s-Connect"><span class="toc-number">1.3.</span> <span class="toc-text">Let’s Connect!</span></a></li></ol></li></ol>
                 </div>
             </div>
             
